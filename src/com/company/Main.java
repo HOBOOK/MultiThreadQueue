@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Main {
 
     public static void main(String[] args) {
-        HoQueue hoQueue = new HoQueue(10);
+        HoQueue hoQueue = new HoQueue(3);
 
         Publisher publisher = new Publisher(hoQueue);
         Publisher publisher1 = new Publisher(hoQueue);
@@ -37,6 +37,7 @@ class HoQueue{
         }
         notify();
         queue.add(str);
+        System.out.println("큐 삽입 : " + str);
     }
     public synchronized String dequeue(){
         if(!isPollAble()){
@@ -47,6 +48,7 @@ class HoQueue{
             }
         }
         notify();
+        System.out.println("큐 제거 : " + queue.peek());
         return queue.poll();
     }
     public boolean isPushAble(){
@@ -82,7 +84,6 @@ class Publisher extends Thread{
     public void run() {
         while(index>=0){
             hoQueue.enqueue(pockets.get(index));
-            System.out.println("큐 삽입 : " + pockets.get(index));
             index--;
         }
     }
@@ -101,7 +102,6 @@ class Consumer extends Thread{
     public void run() {
         while (isRun){
             pockets.add(hoQueue.dequeue());
-            System.out.println("큐 제거 : " + pockets.get(pockets.size()-1));
         }
     }
 }
