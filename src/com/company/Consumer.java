@@ -35,15 +35,6 @@ class Consumer extends Thread{
                 break;
             pockets.add(obj);
         }
-//        System.out.println();
-//        System.out.print(name+"님은 총:" +pockets.size()+ "개 [");
-//        for(int i = 0; i < pockets.size(); i++){
-//            if(i!=0)
-//                System.out.print(",");
-//            System.out.print(pockets.get(i));
-//        }
-//        System.out.print("]");
-//        System.out.println();
     }
 
     public String getConsumerName(){

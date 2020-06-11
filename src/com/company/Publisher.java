@@ -13,7 +13,7 @@ class Publisher extends Thread{
     private final int publishTime; // 공급 인터벌 시간
     private List<String> pockets; // 공급자가 소유한 아이템
     private int index; // 아이템 인덱스
-    private boolean isEnd;
+    private boolean isEnd; // 공급 완료
     private Message message; // 테스트 메시지
     HoQueue<String> hoQueue;
 
